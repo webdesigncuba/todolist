@@ -1,0 +1,13 @@
+<!-- new-task.component.html -->
+<!-- new-task.component.html -->
+<form (ngSubmit)="addTask()">
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="newTask.title" required>
+  
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" [(ngModel)]="newTask.description"></textarea>
+  
+    <button type="submit">Agregar Tarea</button>
+  </form>
+  
+  

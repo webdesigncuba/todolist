@@ -1,0 +1,21 @@
+<div *ngIf="task">
+    <h2>{{ task.title }}</h2>
+    
+  
+    <!-- Aquí podrías mostrar las subtareas si las hay -->
+    <div *ngFor="let subtask of task.subtasks">
+      <p>{{ subtask.title }}</p>
+      
+    </div>
+    <form (submit)="addSubtask()">
+      <label for="subtaskTitle">Título de la Subtarea:</label>
+      <input type="text" id="subtaskTitle" name="subtaskTitle" [(ngModel)]="newSubtask.title" required>
+  
+      <label for="subtaskDescription">Descripción de la Subtarea:</label>
+      <textarea id="subtaskDescription" name="subtaskDescription" [(ngModel)]="newSubtask.description"></textarea>
+  
+      <button type="submit">Agregar Subtarea</button>
+    </form>
+  
+  </div>
+  
