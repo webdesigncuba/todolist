@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('tasks', 'TaskController@index');
+Route::get('tasks/{id}', 'TaskController@show');
+Route::post('tasks', 'TaskController@store');
+
+Route::post('tasks/{taskId}/subtasks', 'SubtaskController@store');
+
