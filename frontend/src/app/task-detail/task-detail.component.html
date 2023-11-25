@@ -1,28 +1,31 @@
-<div *ngIf="task">
-    <h2>{{ task.title }}</h2>
-    
-  
-    <!-- Aquí podrías mostrar las subtareas si las hay -->
-   
-      <ul>
-        <li *ngFor="let subtask of task.subtasks" [ngClass]="{ 'completed': subtask.completed }">
-          <p [style.text-decoration]="subtask.completed ? 'line-through' : 'none'">{{ subtask.title }}</p>
-         
-          <p><button (click)="removeSubtask(subtask.id)">Eliminar</button></p>
-          <p><button (click)="markSubtaskAsCompleted(subtask.id)">Marcar como Completada</button></p>
-    
-        </li>
-      </ul>
-      
-    <form (submit)="addSubtask()">
-      <label for="subtaskTitle">Título de la Subtarea:</label>
-      <input type="text" id="subtaskTitle" name="subtaskTitle" [(ngModel)]="newSubtask.title" required>
-  
-      <label for="subtaskDescription">Descripción de la Subtarea:</label>
-      <textarea id="subtaskDescription" name="subtaskDescription" [(ngModel)]="newSubtask.description"></textarea>
-  
-      <button type="submit">Agregar Subtarea</button>
-    </form>
-  
+<div class="row d-flex justify-content-between">
+    <div class="col-12">
+      <h2 class="text-bold">{{ task.title }}</h2>
+    </div>
+    <div class="col-12">
+      <form (submit)="addSubtask()">
+        <label for="subtaskTitle">Título da subtarefa:</label>
+        <input type="text" id="subtaskTitle" name="subtaskTitle" [(ngModel)]="newSubtask.title" required class="form-control mb-4">
+        <button class="btn btn-success" type="submit">Adicionar subtarefa</button>
+      </form>
+    </div>
+
+    <table class="table table-striped mt-4">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tbody>
+        <tr *ngFor="let subtask of task.subtasks" [ngClass]="{ 'completed': subtask.completed }">
+          <td [style.text-decoration]="subtask.completed ? 'line-through' : 'none'">{{ subtask.title }}</td>
+          <td class="justify-content-end">
+            <ul>
+              <li><button class="btn btn-sm btn-success " (click)="removeSubtask(subtask.id)">Eliminar</button></li>
+              <li> <button class="btn btn-sm btn-primary" (click)="markSubtaskAsCompleted(subtask.id)">Marcar como Completada</button></li>
+            </ul> 
+          </td>  
+        </tr>
+      </tbody>
+    </table>
   </div>
   

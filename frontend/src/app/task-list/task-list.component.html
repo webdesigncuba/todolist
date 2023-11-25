@@ -1,6 +1,15 @@
-<div *ngFor="let task of tasks">
-    <a [routerLink]="['/tasks', task.id]">
-      {{ task.title }}
-    </a>
-  </div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks" >
+      <td><a [routerLink]="['/tasks', task.id]">
+        {{ task.title }}
+      </a></td>
+    </tr>
+  </tbody>
   
+</table>
