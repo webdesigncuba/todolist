@@ -35,9 +35,14 @@ export class TodoService {
     return this.http.post<any>(url, newSubtask);
   }
 
-  deleteSubtask(taskId: number, subtaskId: number): Observable<any> {
+  deleteSubtaskFromTask(taskId: number, subtaskId: number): Observable<any> {
     const url = `${this.apiUrl}/tasks/${taskId}/subtasks/${subtaskId}`;
     return this.http.delete<any>(url);
+  }
+  
+  markSubtaskAsCompleted(taskId: number, subtaskId: number): Observable<any> {
+    const url = `${this.apiUrl}/tasks/${taskId}/subtasks/${subtaskId}/complete`;
+    return this.http.patch<any>(url, {});
   }
   
 }

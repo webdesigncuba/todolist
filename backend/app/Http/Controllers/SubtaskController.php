@@ -42,5 +42,17 @@ class SubtaskController extends Controller
         $subtask->delete();
         return response()->json(['message' => 'Subtarea eliminada correctamente']);
     }
+    
+    public function markAsCompleted(Request $request, $taskId, $subtaskId)
+    {
+        $subtask = Subtask::where('task_id', $taskId)
+            ->where('id', $subtaskId)
+            ->firstOrFail();
+
+        $subtask->completed = true; // Actualizar el campo 'completed' a true o 1 (dependiendo de tu esquema)
+        $subtask->save();
+
+        return response()->json(['message' => 'Subtask marked as completed']);
+    }
 }
 

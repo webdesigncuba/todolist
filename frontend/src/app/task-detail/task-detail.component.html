@@ -3,10 +3,17 @@
     
   
     <!-- Aquí podrías mostrar las subtareas si las hay -->
-    <div *ngFor="let subtask of task.subtasks">
-      <p>{{ subtask.title }}</p>
+   
+      <ul>
+        <li *ngFor="let subtask of task.subtasks" [ngClass]="{ 'completed': subtask.completed }">
+          <p [style.text-decoration]="subtask.completed ? 'line-through' : 'none'">{{ subtask.title }}</p>
+         
+          <p><button (click)="removeSubtask(subtask.id)">Eliminar</button></p>
+          <p><button (click)="markSubtaskAsCompleted(subtask.id)">Marcar como Completada</button></p>
+    
+        </li>
+      </ul>
       
-    </div>
     <form (submit)="addSubtask()">
       <label for="subtaskTitle">Título de la Subtarea:</label>
       <input type="text" id="subtaskTitle" name="subtaskTitle" [(ngModel)]="newSubtask.title" required>

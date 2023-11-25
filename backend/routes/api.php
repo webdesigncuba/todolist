@@ -29,4 +29,5 @@ Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
 Route::post('tasks/{taskId}/subtasks', [SubtaskController::class, 'store']);
 Route::put('tasks/{taskId}/subtasks/{subtaskId}', [SubtaskController::class, 'update']);
 Route::delete('tasks/{taskId}/subtasks/{subtaskId}', [SubtaskController::class, 'destroy']);
+Route::patch('/tasks/{taskId}/subtasks/{subtaskId}/complete', [SubtaskController::class,  'markAsCompleted']);
 

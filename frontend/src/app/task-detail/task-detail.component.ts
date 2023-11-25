@@ -52,14 +52,27 @@ export class TaskDetailComponent implements OnInit {
     }
   }
 
+ 
   removeSubtask(subtaskId: number) {
-    this.todoService.deleteSubtask(this.taskId, subtaskId).subscribe(
+    this.todoService.deleteSubtaskFromTask(this.taskId, subtaskId).subscribe(
       () => {
         console.log('Subtarea eliminada');
         this.getTask(); // Actualizar la tarea después de eliminar la subtarea
       },
       (error) => {
         console.error('Error al eliminar subtarea:', error);
+      }
+    );
+  }
+
+  markSubtaskAsCompleted(subtaskId: number) {
+    this.todoService.markSubtaskAsCompleted(this.taskId, subtaskId).subscribe(
+      () => {
+        console.log('Subtarea marcada como completada');
+        this.getTask(); // Actualizar la tarea después de marcar la subtarea
+      },
+      (error) => {
+        console.error('Error al marcar subtarea como completada:', error);
       }
     );
   }
