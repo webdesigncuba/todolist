@@ -28,6 +28,31 @@ class TaskController extends Controller
         return response()->json(['task' => $task]);
     }
 
-    // Otros métodos como update() y destroy() para actualizar y eliminar tareas
+    public function update(Request $request, $id)
+    {
+        // Encuentra la tarea por su ID
+        $task = Task::find($id);
+        
+        if (!$task) {
+            return response()->json(['error' => 'Tarea no encontrada'], 404);
+        }
+
+        // Actualiza la tarea
+        $task->update($request->all());
+        return response()->json(['task' => $task]);
+    }
+
+    public function destroy($id)
+    {
+        // Encuentra la tarea por su ID y elimínala
+        $task = Task::find($id);
+
+        if (!$task) {
+            return response()->json(['error' => 'Tarea no encontrada'], 404);
+        }
+
+        $task->delete();
+        return response()->json(['message' => 'Tarea eliminada correctamente']);
+    }
 }
 
